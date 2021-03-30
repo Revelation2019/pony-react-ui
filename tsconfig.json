@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "module": "es2015",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "jsx": "react",
+    "declaration": true,                   /* Generates corresponding '.d.ts' file. */
+    "declarationMap": false,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
+    "sourceMap": true,                     /* Generates corresponding '.map' file. */
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
