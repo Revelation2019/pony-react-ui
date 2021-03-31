@@ -1,15 +1,15 @@
-const path = require('path')
-const webpack = require('webpack')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const LoadablePlugin = require('@loadable/webpack-plugin')
 
 // const smp = new SpeedMeasurePlugin() // 测量构建速度
-const devMode = process.env.NODE_ENV !== 'production'
-const pkg = require('./package.json')
+const devMode = process.env.NODE_ENV !== 'production';
+const pkg = require('./package.json');
 
 module.exports = ({
   mode: devMode ? 'development' : 'production',
@@ -100,21 +100,23 @@ module.exports = ({
     // devMode ? new webpack.HotModuleReplacementPlugin() : null
   ],
   optimization: {
-    minimizer: devMode ? [] : [
-      // 压缩js代码
-      new UglifyJsPlugin({
-        cache: true, // 启用文件缓存并设置缓存目录的路径
-        parallel: true, // 使用多进程并行运行
-        sourceMap: true // set to true if you want JS source maps
-      }),
-      // 用于优化或者压缩CSS资源
-      new OptimizeCSSAssetsPlugin({
-        assetNameRegExp: /\.css$/g,
-        cssProcessor: require('cssnano'), // 用于优化\最小化 CSS 的 CSS 处理器，默认为 cssnano
-        cssProcessorOptions: { safe: true, discardComments: { removeAll: true } }, // 传递给 cssProcesso
-        canPrint: true // 布尔值，指示插件是否可以将消息打印到控制台，默认为 true
-      })
-    ],
+    minimizer: devMode
+      ? []
+      : [
+          // 压缩js代码
+          new UglifyJsPlugin({
+            cache: true, // 启用文件缓存并设置缓存目录的路径
+            parallel: true, // 使用多进程并行运行
+            sourceMap: true // set to true if you want JS source maps
+          }),
+          // 用于优化或者压缩CSS资源
+          new OptimizeCSSAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'), // 用于优化\最小化 CSS 的 CSS 处理器，默认为 cssnano
+            cssProcessorOptions: { safe: true, discardComments: { removeAll: true } }, // 传递给 cssProcesso
+            canPrint: true // 布尔值，指示插件是否可以将消息打印到控制台，默认为 true
+          })
+        ],
     sideEffects: false
   }
-})
+});

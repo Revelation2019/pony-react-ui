@@ -1,5 +1,5 @@
-import React from 'react'
-import classNames from 'classnames'
+import React from 'react';
+import classNames from 'classnames';
 
 /** 类型 */
 export type IBtnType = 'primary' | 'default' | 'danger' | 'link';
@@ -22,7 +22,7 @@ export interface IButtonProps {
 
 /** 按钮 */
 export const Button = (props: IButtonProps) => {
-  const { className, size, type = 'default', children, disabled = false } = props
+  const { className, size, type = 'default', children, disabled = false } = props;
 
   return <div className={classNames('btn', className, {
     [`btn-${size}`]: size,
@@ -30,5 +30,5 @@ export const Button = (props: IButtonProps) => {
     'btn-disabled': disabled
   })}>
     { children }
-  </div>
-}
+  </div>;
+};

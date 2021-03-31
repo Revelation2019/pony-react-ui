@@ -1,6 +1,8 @@
 module.exports = {
   env: {
     browser: true,
+    node: true,
+    es6: true
   },
   extends: [
     'plugin:react/recommended',
@@ -11,13 +13,18 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     },
-    ecmaVersion: 12
+    ecmaVersion: 8
   },
   plugins: [
     'react',
     '@typescript-eslint'
   ],
   rules: {
-    'no-use-before-define': 'off'
+    'no-use-before-define': 'off',
+    semi: [2, 'always']
+  },
+  globals: {
+    // 防止使用全局变量JSX报错
+    JSX: 'readonly'
   }
-}
+};

@@ -1,1 +1,1 @@
-import './styles/pony.scss'
+import './styles/pony.scss';

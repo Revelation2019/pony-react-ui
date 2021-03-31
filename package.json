@@ -7,6 +7,8 @@
   "types": "lib/index.d.ts",
   "author": "zhousheng_zuel@163.com",
   "license": "MIT",
+  "homepage": "",
+  "keywords": [],
   "scripts": {
     "docz:dev": "docz dev",
     "docz:build": "docz build",
@@ -15,10 +17,26 @@
     "build:prod": "cross-env NODE_ENV=production webpack",
     "clean": "rimraf lib && rimraf es",
     "gtdf": "tsc -p tsconfig.json --target ES5 --outDir lib",
-    "copy": "cpr src/styles lib -o && cpr src/assets lib -o && mkdir es && cpr src/styles es -o && cpr src/assets es -o",
+    "copy": "cpr src/styles lib/styles -o && cpr src/assets lib/assets -o && mkdir es && cpr src/styles es/styles -o && cpr src/assets es/assets -o",
     "build:es": "npm run clean && npm run gtdf && npm run copy",
     "build": "rimraf dist && npm run build:prod && npm run build:es"
   },
+  "bugs": {
+    "url": "https://github.com/Revelation2019/pony-react-ui/issues",
+    "email": "zhousheng_zuel@163.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Revelation2019/pony-react-ui.git"
+  },
+  "files": [
+    "dist/*",
+    "lib",
+    "es",
+    "index.js",
+    "package.json",
+    "README.md"
+  ],
   "dependencies": {
     "classnames": "^2.2.6",
     "cross-env": "^7.0.3",
