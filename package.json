@@ -22,7 +22,7 @@
     "gtdf": "tsc -p tsconfig.json --target ES5 --outDir lib",
     "copy": "cpr src/styles lib/styles -o && cpr src/assets lib/assets -o && mkdir es && cpr src/styles es/styles -o && cpr src/assets es/assets -o",
     "build:es": "npm run clean && npm run gtdf && npm run copy",
-    "build": "rimraf dist && npm run build:prod && npm run build:es"
+    "build": "rimraf dist && npm run build:prod && npm run build:dev && npm run build:es"
   },
   "bugs": {
     "url": "https://github.com/Revelation2019/pony-react-ui/issues",
@@ -45,6 +45,7 @@
     "cross-env": "^7.0.3",
     "docz": "^2.3.1",
     "eslint-plugin-react": "^7.23.1",
+    "get-intrinsic": "1.0.1",
     "node-sass": "^5.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "react": "^17.0.2",
@@ -73,10 +74,6 @@
     "cpr": "^3.0.1",
     "css-loader": "^5.2.0",
     "cssnano": "^4.1.10",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
     "file-loader": "^6.2.0",
     "gatsby-plugin-sass": "3.2.0",
     "make-dir-cli": "^2.0.0",

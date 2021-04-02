@@ -2,9 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const LoadablePlugin = require('@loadable/webpack-plugin')
 
 // const smp = new SpeedMeasurePlugin() // 测量构建速度
@@ -17,7 +18,7 @@ module.exports = ({
   entry: path.resolve(__dirname, './src/index.ts'),
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: devMode ? 'pony.development.js' : 'pony.production.js',
+    filename: devMode ? 'pony.js' : 'pony.min.js',
     library: 'pony',
     libraryTarget: 'umd'
   },
@@ -84,7 +85,7 @@ module.exports = ({
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     // new LoadablePlugin(),
     // 该插件能够使得指定目录被忽略，从而使得打包变快，文件变小;下面忽略了包含’./locale/'该字段路径的文件目录,但是也使得我们使用的时候不能显示中文语言了，所以这个时候可以手动引入中文语言的目录
     new webpack.IgnorePlugin(/\.\/locale/, /moment/),
@@ -94,7 +95,7 @@ module.exports = ({
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: devMode ? 'pony.development.css' : 'pony.production.css',
+      filename: devMode ? 'pony.css' : 'pony.min.css',
       chunkFilename: '[id].css'
     })
     // devMode ? new webpack.HotModuleReplacementPlugin() : null
@@ -104,10 +105,16 @@ module.exports = ({
       ? []
       : [
           // 压缩js代码
-          new UglifyJsPlugin({
-            cache: true, // 启用文件缓存并设置缓存目录的路径
+          // new UglifyJsPlugin({
+          //   cache: true, // 启用文件缓存并设置缓存目录的路径
+          //   parallel: true, // 使用多进程并行运行
+          //   sourceMap: true // set to true if you want JS source maps
+          // }),
+          // webpack v5 使用内置的TerserJSPlugin替代UglifyJsPlugin，因为UglifyJsPlugin不支持ES6
+          new TerserJSPlugin({
+            // cache: true, // 启用文件缓存并设置缓存目录的路径
             parallel: true, // 使用多进程并行运行
-            sourceMap: true // set to true if you want JS source maps
+            // sourceMap: true // set to true if you want JS source maps
           }),
           // 用于优化或者压缩CSS资源
           new OptimizeCSSAssetsPlugin({
