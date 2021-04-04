@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "lib": [
+    "target": "es2015", // 指定编译之后的版本
+    "lib": [ // 指定要包含在编译中的库文件
       "dom",
       "esnext"
     ],
-    "module": "es2015",
-    "allowJs": true,
+    "module": "es2015", // 指定要使用的模板标准
+    "allowJs": true, // 指定是否允许编译JS文件，默认false,即不编译JS文件
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -18,9 +18,6 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react",
-    "declaration": true,                   /* Generates corresponding '.d.ts' file. */
-    "declarationMap": false,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
-    "sourceMap": true,                     /* Generates corresponding '.map' file. */
   },
   "include": [
     "src/**/*.ts",
