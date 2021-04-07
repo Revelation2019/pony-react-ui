@@ -6,13 +6,14 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
+    // 'standard'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true 
     },
-    ecmaVersion: 5
+    ecmaVersion: 8
   },
   plugins: [
     'react',
