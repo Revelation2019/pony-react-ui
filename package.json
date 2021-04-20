@@ -1,6 +1,6 @@
 {
   "name": "pony-react-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React组件库",
   "main": "index.js",
   "module": "lib/index.js",
@@ -18,10 +18,10 @@
     "docz:serve": "docz build && docz serve",
     "build:dev": "cross-env NODE_ENV=development webpack",
     "build:prod": "cross-env NODE_ENV=production webpack",
-    "clean": "rimraf dist && rimraf lib && rimraf es",
+    "clean": "rimraf dist && rimraf lib",
     "build:tsc": "tsc -p tsconfig.build.json --target ES5 --outDir lib",
-    "build:es": "cpr src/styles lib/styles -o && cpr src/assets lib/assets -o && mkdir es && cpr src/styles es/styles -o && cpr src/assets es/assets -o",
-    "build": "npm run clean && npm run build:prod && npm run build:dev && npm run build:tsc &&npm run build:es"
+    "build:es": "cpr src/styles lib/styles -o && cpr src/assets lib/assets -o",
+    "build": "npm run clean && npm run build:prod && npm run build:dev && npm run build:tsc && npm run build:es"
   },
   "bugs": {
     "url": "https://github.com/Revelation2019/pony-react-ui/issues",
@@ -34,7 +34,6 @@
   "files": [
     "dist/*",
     "lib",
-    "es",
     "index.js",
     "package.json",
     "README.md"
