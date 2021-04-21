@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
@@ -53,7 +53,11 @@ module.exports = ({
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 2 // 一个css中引入了另一个css，也会执行之前两个loader，即postcss-loader和sass-loader
+              modules: {
+                auto: true,
+                localIdentName: devMode ? '[path][name]__[local]' : '[hash:base64:5]'
+              },
+              importLoaders: 2, // 一个css中引入了另一个css，也会执行之前两个loader，即postcss-loader和sass-loader
             }
           },
           {

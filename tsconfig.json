@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2015", // 指定编译之后的版本
-    "lib": [ // 指定要包含在编译中的库文件
+    "target": "es2015", // 指定ECMAScript目标版本 "ES3"（默认）， "ES5"， "ES6"/ "ES2015"， "ES2016"， "ES2017"或 "ESNext"
+    "lib": [ // 编译过程中需要引入的库文件的列表
       "dom",
       "esnext"
     ],
-    "module": "es2015", // 指定要使用的模板标准
+    "module": "es2015", // 指定生成哪个模块系统代码:"None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"
     "allowJs": true, // 指定是否允许编译JS文件，默认false,即不编译JS文件
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -16,8 +16,9 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false,
-    "jsx": "react",
+    "noEmit": false, // 不生成输出文件
+    "jsx": "react", // 在 .tsx文件里支持JSX
+    "newLine": "lf", // 当生成文件时指定行结束符： "crlf"（windows）或 "lf"（unix）
   },
   "include": [
     "src/**/*.ts",
